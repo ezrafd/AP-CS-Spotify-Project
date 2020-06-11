@@ -23,13 +23,15 @@ public class CreatePlaylist {
 //          .description("Amazing music.")
             .build();
 
-    public static void createPlaylist() {
+    public static String createPlaylist() {
         try {
             final Playlist playlist = createPlaylistRequest.execute();
 
             System.out.println("Name: " + playlist.getName());
+            return playlist.getId();
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return null;
     }
 }

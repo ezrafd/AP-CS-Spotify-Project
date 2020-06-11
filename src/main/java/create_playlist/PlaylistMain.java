@@ -32,12 +32,14 @@ public class PlaylistMain {
             }
         }
 
+        String uris[] = allTracks.toArray(new String[allTracks.size()]);
+
         CreatePlaylist p = new CreatePlaylist();
-        p.createPlaylist();
+        String playlistId = p.createPlaylist();
 
-        for (String uri : allTracks) {
+        AddTracks add = new AddTracks(playlistId, uris);
+        add.addItemsToPlaylist();
 
-        }
 
     }
 }
