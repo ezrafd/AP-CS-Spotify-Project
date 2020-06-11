@@ -11,19 +11,19 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CreatePlaylist {
-    private static final String name = String.format("New Music %s", LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yy")));
+    private final String name = String.format("New Music %s", LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yy")));
 
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setAccessToken(PlaylistMain.accessToken)
             .build();
-    private static final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(PlaylistMain.userId, name)
+    private  final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(PlaylistMain.userId, name)
 //          .collaborative(false)
 //          .public_(false)
 //          .description("Amazing music.")
             .build();
 
-    public static String createPlaylist() {
+    public String createPlaylist() {
         try {
             final Playlist playlist = createPlaylistRequest.execute();
 

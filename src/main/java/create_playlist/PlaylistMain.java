@@ -18,7 +18,6 @@ public class PlaylistMain {
         ArrayList<AlbumSimplified> albums = a.getArtistsAlbums();
 
         ArrayList<String> allTracks = new ArrayList<>();
-        ArrayList<String> trackNames = new ArrayList<>();
 
         for (AlbumSimplified album : albums) {
             GetAlbumTracks gat = new GetAlbumTracks(album.getId());
@@ -26,13 +25,12 @@ public class PlaylistMain {
 
             for (TrackSimplified track : tracks) {
                 if (!allTracks.contains(track.getUri())) {
-                    trackNames.add(track.getName());
                     allTracks.add(track.getUri());
                 }
             }
         }
 
-        String uris[] = allTracks.toArray(new String[allTracks.size()]);
+        String[] uris = allTracks.toArray(new String[0]);
 
         CreatePlaylist p = new CreatePlaylist();
         String playlistId = p.createPlaylist();
