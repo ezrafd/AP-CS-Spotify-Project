@@ -16,7 +16,7 @@ public class GetAlbums {
     private String id;
     private Date cutoff;
 
-    private SimpleDateFormat simp = new SimpleDateFormat("yyyy-mm-dd");
+    private SimpleDateFormat simp = new SimpleDateFormat("yyyy-MM-dd");
 
     private final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setAccessToken(PlaylistMain.accessToken)

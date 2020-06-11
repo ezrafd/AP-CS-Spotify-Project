@@ -1,13 +1,14 @@
 package create_playlist;
 
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
 public class PlaylistMain {
-    protected static final String accessToken = "BQCHLn-P7JZcAxSCZnW2HGRZR0lbTuc-OJOpcaOTxc8l3UTR1Bk2KnREAOMjpE8Ehf_dtAT5Jvx5srgNNtTMCYnb6S535W9bNnUisBinFoGE79R8qBJXmBI0YRqQtKV6zIGlGgTwoR5pIioVaKxQSskiDBpPNcNRVp8y6Mj2-oT9TLCKl1vgAz8gnas91uAMgidhgck-GSWMmLqbqS29oJAD6bQhw_F1zsTiAE3fSEFam1Skvhrya58GbBeVNAR4fKaS8r8YyBDtlKDh2mvT7SRhgQy5BTX4mMxB";
+    protected static final String accessToken = "BQB1yEZMQ5mtC16Sp9MvFmdylrTaWtgTTiGIdSPIE4v1oaxcnFMD9ofn4o23TGBKLLY8OEZsRFn_EIQ5h5DJSH8nm7bRvmuRgL-kydfwyWaIwSa2v6DjVnouDViBhvcP1U0aQM2ou_bB7LTMN5u6hxSbWZFqFi019u5ugQgjOhJfr6O9tGbMCHRoRcjOvqVIyN-OG7bzXWrwPluexD3o7YTu0UFLCSLpC_7crULUPMeZt7krAXCqEE7C2e_cDabEIJzXpJMPoOsdpZomutfqBnwxjm-A03PDgVZO";
     protected static final String userId = "qzxb7k3cbr15kbmaney4brt79";
 
     public static void main(String[] args) throws ParseException {
@@ -25,7 +26,11 @@ public class PlaylistMain {
 
             for (TrackSimplified track : tracks) {
                 if (!allTracks.contains(track.getUri())) {
-                    allTracks.add(track.getUri());
+                    for (ArtistSimplified artist : track.getArtists()) {
+                        if (artist.getId().equals(id)) {
+                            allTracks.add(track.getUri());
+                        }
+                    }
                 }
             }
         }
@@ -34,6 +39,8 @@ public class PlaylistMain {
 
         CreatePlaylist p = new CreatePlaylist();
         String playlistId = p.createPlaylist();
+        System.out.println(playlistId);
+        System.out.println(uris);
 
         AddTracks add = new AddTracks(playlistId, uris);
         add.addItemsToPlaylist();
