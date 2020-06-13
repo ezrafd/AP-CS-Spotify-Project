@@ -19,7 +19,7 @@ public class PlaylistMain {
         ArrayList<AlbumSimplified> albums = a.getArtistsAlbums();
 
         ArrayList<String> allTracks = new ArrayList<>();
-
+//rona
         for (AlbumSimplified album : albums) {
             GetAlbumTracks gat = new GetAlbumTracks(album.getId());
             TrackSimplified[] tracks = gat.getAlbumsTracks();
