@@ -34,7 +34,7 @@ public class PlaylistMain {
                 }
             }
         }
-
+//rona szn
         String[] uris = allTracks.toArray(new String[0]);
 
         CreatePlaylist p = new CreatePlaylist();
