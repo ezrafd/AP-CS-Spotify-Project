@@ -27,7 +27,6 @@ public class GetAlbums {
     public GetAlbums(String id, String cutoff) throws java.text.ParseException {
         this.id = id;
         this.cutoff = simp.parse(cutoff);
-        System.out.println(id);
         getArtistsAlbumsRequest = spotifyApi.getArtistsAlbums(id)
                 .build();
     }
@@ -50,7 +49,7 @@ public class GetAlbums {
                     }
                 }
             }
-            System.out.println(albumNames);
+
             return albums;
         } catch (IOException | SpotifyWebApiException | ParseException | java.text.ParseException e) {
             System.out.println("Error: " + e.getMessage());

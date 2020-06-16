@@ -22,15 +22,12 @@ public class AddTracks {
         this.playlistId = playlistId;
         addItemsToPlaylistRequest = spotifyApi
                 .addItemsToPlaylist(playlistId, uris)
-//          .position(0)
                 .build();
     }
 
     public void addItemsToPlaylist() {
         try {
             final SnapshotResult snapshotResult = addItemsToPlaylistRequest.execute();
-
-            System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
