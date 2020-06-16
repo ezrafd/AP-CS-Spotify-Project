@@ -29,8 +29,6 @@ public class AddTracks {
     public void addItemsToPlaylist() {
         try {
             final SnapshotResult snapshotResult = addItemsToPlaylistRequest.execute();
-
-            System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }

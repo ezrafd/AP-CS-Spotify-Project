@@ -26,8 +26,6 @@ public class CreatePlaylist {
     public String createPlaylist() {
         try {
             final Playlist playlist = createPlaylistRequest.execute();
-
-            System.out.println("Name: " + playlist.getName());
             return playlist.getId();
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
