@@ -22,7 +22,6 @@ public class AddTracks {
         this.playlistId = playlistId;
         addItemsToPlaylistRequest = spotifyApi
                 .addItemsToPlaylist(playlistId, uris)
-//          .position(0)
                 .build();
     }
 
